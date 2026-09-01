@@ -1979,10 +1979,16 @@ export default function App() {
 
         @media (max-width: 600px) {
           .lnt-food-grid, .lnt-drink-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem 1rem;
           }
-          .lnt-menu-card-featured { grid-column: span 1; }
+          .lnt-menu-card-featured { grid-column: span 2; }
           .lnt-menu-card-featured .lnt-menu-card-img { aspect-ratio: 4 / 3; }
+
+          .lnt-menu-card-inner > div:last-child {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
 
           .lnt-footer-grid {
             grid-template-columns: 1fr;
