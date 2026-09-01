@@ -40,20 +40,20 @@ const foodCategories: FoodCategory[] = [
     id: 'small-plates',
     title: 'Small Plates',
     items: [
-      { name: 'Fried Chicken Soft Bone', description: 'Crunchy fried soft-bone chicken, tossed in-house.', price: '$19', img: `${IMG}/3022060200197.jpg` },
-      { name: 'Corn Ribs', description: 'Roasted corn ribs with a smoky butter glaze.', price: '$18', img: `${IMG}/3222091500215.jpg` },
+      { name: 'Fried Chicken Soft Bone', description: 'Crunchy fried soft-bone chicken, tossed in-house.', price: '$19', img: `/menu/3022060200197.jpg` },
+      { name: 'Corn Ribs', description: 'Roasted corn ribs with a smoky butter glaze.', price: '$18', img: `/menu/3222091500215.jpg` },
       { name: 'Prosciutto Melon', description: 'Chilled rockmelon wrapped in prosciutto.', price: '$16', img: '/photos/prosciutto-melon.jpg' },
-      { name: 'DIY Rice Balls', description: 'Build-your-own seasoned rice balls at the table.', price: '$9', img: `${IMG}/3022060200227.jpg` },
+      { name: 'DIY Rice Balls', description: 'Build-your-own seasoned rice balls at the table.', price: '$9', img: `/menu/3022060200227.jpg` },
     ],
   },
   {
     id: 'sharing-dishes',
     title: 'Sharing Dishes',
     items: [
-      { name: 'Tulip Chicken Feet', description: 'Bubbling chicken feet in a fiery gochujang broth.', price: '$39', img: `${IMG}/3225062500016.jpg`, tag: 'Very Spicy' },
-      { name: 'Spicy Large Intestine Tteokbokki', description: 'Chewy rice cakes and grilled intestine in spicy broth.', price: '$47', img: `${IMG}/3022060200043.jpg`, tag: 'Very Spicy' },
+      { name: 'Tulip Chicken Feet', description: 'Bubbling chicken feet in a fiery gochujang broth.', price: '$39', img: `/menu/3225062500016.jpg`, tag: 'Very Spicy' },
+      { name: 'Spicy Large Intestine Tteokbokki', description: 'Chewy rice cakes and grilled intestine in spicy broth.', price: '$47', img: `/menu/3022060200043.jpg`, tag: 'Very Spicy' },
       { name: 'Beef Tendon Pot', description: 'Slow-braised beef tendon in a rich, savoury broth.', price: '$42', img: '/photos/beef-tendon-pot.jpg' },
-      { name: 'Spicy Fishcake Pot', description: 'Housemade fishcakes simmered in a spicy broth.', price: '$39', img: `${IMG}/3022060200074.jpg` },
+      { name: 'Spicy Fishcake Pot', description: 'Housemade fishcakes simmered in a spicy broth.', price: '$39', img: `/menu/3022060200074.jpg` },
       { name: 'Fishcake Pot', description: 'Housemade fishcakes in a light, savoury broth.', price: '$36', img: '/photos/fishcake-pot.jpg' },
     ],
   },
@@ -63,14 +63,14 @@ const foodCategories: FoodCategory[] = [
     items: [
       { name: 'Grilled Pork Jowl with Fried Rice', description: 'Charcoal-grilled pork jowl over garlic fried rice.', price: '$59', img: '/photos/grilled-pork-jowl-fried-rice.jpg', tag: 'New', featured: true },
       { name: 'Late Night Table 5Hap', description: 'Five ingredients, one shared plate.', price: '$68', img: '/photos/5hap.jpg', tag: 'Popular', featured: true },
-      { name: 'Seasoned Grilled Large Intestines', description: 'Grilled large intestine in a bold house marinade.', price: '$49' },
-      { name: 'Plain Grilled Large Intestines', description: 'Grilled large intestine, simply seasoned.', price: '$49', img: `${IMG}/3226042800171.jpg` },
-      { name: 'Beef Tartare Cockle Bibimbap', description: 'Beef tartare and cockles over seasoned rice.', price: '$44', img: `${IMG}/3223110100850.jpg` },
-      { name: 'Cockles & Bibimbap', description: 'Fresh cockles served with seasoned rice.', price: '$45', img: `${IMG}/3223051700744.jpg` },
-      { name: 'Gambas', description: 'Garlic prawns, sizzling in olive oil.', price: '$31', img: `${IMG}/3022060200081.jpg` },
-      { name: 'Signature Spicy Chicken', description: 'Our signature fried chicken, tossed fiery hot.', price: '$37', img: `${IMG}/3022060200128.jpg`, tag: 'Very Spicy' },
-      { name: 'Sweet & Spicy Chicken', description: 'Fried chicken glazed sweet and spicy.', price: '$37', img: `${IMG}/3022060200135.jpg` },
-      { name: 'Garlic Soy Chicken', description: 'Fried chicken tossed in a garlic soy glaze.', price: '$37', img: `${IMG}/3022060200159.jpg` },
+      { name: 'Seasoned Grilled Large Intestines', description: 'Grilled large intestine in a bold house marinade.', price: '$49', img: '/photos/seasoned-grilled-intestines.jpg' },
+      { name: 'Plain Grilled Large Intestines', description: 'Grilled large intestine, simply seasoned.', price: '$49', img: `/menu/3226042800171.jpg` },
+      { name: 'Beef Tartare Cockle Bibimbap', description: 'Beef tartare and cockles over seasoned rice.', price: '$44', img: `/menu/3223110100850.jpg` },
+      { name: 'Cockles & Bibimbap', description: 'Fresh cockles served with seasoned rice.', price: '$45', img: '/photos/cockle-bibimbap.jpg' },
+      { name: 'Gambas', description: 'Garlic prawns, sizzling in olive oil.', price: '$31', img: `/menu/3022060200081.jpg` },
+      { name: 'Signature Spicy Chicken', description: 'Our signature fried chicken, tossed fiery hot.', price: '$37', img: `/menu/3022060200128.jpg`, tag: 'Very Spicy' },
+      { name: 'Sweet & Spicy Chicken', description: 'Fried chicken glazed sweet and spicy.', price: '$37', img: `/menu/3022060200135.jpg` },
+      { name: 'Garlic Soy Chicken', description: 'Fried chicken tossed in a garlic soy glaze.', price: '$37', img: `/menu/3022060200159.jpg` },
     ],
   },
   {
@@ -81,21 +81,21 @@ const foodCategories: FoodCategory[] = [
       { name: 'Galbi Risotto', description: 'Our house signature — creamy risotto with braised short rib.', price: '$36', img: '/photos/galbi-risotto.jpg', tag: 'Signature', featured: true },
       { name: 'Truffle Chapaghetti', description: 'Korean black bean noodles finished with truffle.', price: '$32', img: '/photos/truffle-chapaghetti.jpg' },
       { name: 'Clam Pasta', description: 'Pasta steamed with clams and soju.', price: '$32', img: '/photos/clam-pasta.jpg' },
-      { name: 'Prawn Cream Pasta', description: 'Baked pasta in a rich prawn cream sauce.', price: '$34', img: `${IMG}/3022060200104.jpg` },
-      { name: 'Horumon Don', description: 'Grilled beef offal over steamed rice.', price: '$23' },
-      { name: 'Pork Katsu Meal', description: 'Crumbed pork cutlet with rice and sides.', price: '$21', img: `${IMG}/3022060200173.jpg` },
-      { name: 'Unagi (Eel) Don', description: 'Grilled eel, glazed and served over rice.', price: '$27', img: `${IMG}/3225050901313.jpg` },
+      { name: 'Prawn Cream Pasta', description: 'Baked pasta in a rich prawn cream sauce.', price: '$34', img: '/photos/prawn-cream-pasta.jpg' },
+      { name: 'Horumon Don', description: 'Grilled beef offal over steamed rice.', price: '$23', img: '/photos/horumon-don.jpg' },
+      { name: 'Pork Katsu Meal', description: 'Crumbed pork cutlet with rice and sides.', price: '$21', img: `/menu/3022060200173.jpg` },
+      { name: 'Unagi (Eel) Don', description: 'Grilled eel, glazed and served over rice.', price: '$27', img: `/menu/3225050901313.jpg` },
     ],
   },
   {
     id: 'sides',
     title: 'Sides',
     items: [
-      { name: 'Potato Chips', description: 'House-cut potato chips, crisp and salted.', price: '$9', img: `${IMG}/3022060200241.jpg` },
-      { name: 'Truffle Fries', description: 'Crispy fries finished with truffle.', price: '$11', img: `${IMG}/3022060200258.jpg` },
-      { name: 'Rice', description: 'Steamed rice.', price: '$4', img: `${IMG}/3022060300118.jpg` },
-      { name: 'Add Udon', description: 'Add udon noodles to your pot.', price: '$7', img: `${IMG}/3022060200234.jpg` },
-      { name: 'Add Ramen', description: 'Add ramen noodles to your pot.', price: '$6', img: `${IMG}/3222091000203.jpg` },
+      { name: 'Potato Chips', description: 'House-cut potato chips, crisp and salted.', price: '$9', img: '/sides/potato-chips.jpg' },
+      { name: 'Truffle Fries', description: 'Crispy fries finished with truffle.', price: '$11', img: '/sides/truffle-fries.jpg' },
+      { name: 'Rice', description: 'Steamed rice.', price: '$4', img: '/sides/rice.jpg' },
+      { name: 'Add Udon', description: 'Add udon noodles to your pot.', price: '$7', img: '/sides/udon.jpg' },
+      { name: 'Add Ramen', description: 'Add ramen noodles to your pot.', price: '$6', img: '/sides/ramen.jpg' },
     ],
   },
 ]
@@ -105,10 +105,10 @@ const drinkCategories: DrinkCategory[] = [
     id: 'makgeolli',
     title: 'Makgeolli',
     items: [
-      { name: 'Milk Tea Rice Wine', description: 'Creamy milk tea-infused makgeolli.', price: '$16', img: `${IMG}/3226042800140.jpg`, tag: 'New' },
-      { name: 'Jipyeong Original Rice Wine 750ml', description: 'Classic Korean rice wine, lightly sparkling.', price: '$14', img: `${IMG}/3225011501217.jpg`, tag: 'Popular' },
-      { name: 'Kooksoondang Original Rice Wine 750ml', description: 'Traditional Korean rice wine.', price: '$13', img: `${IMG}/3224092501086.jpg` },
-      { name: 'Chestnut Rice Wine 750mL', description: 'Rice wine infused with roasted chestnut.', price: '$15', img: `${IMG}/3022060300088.jpg` },
+      { name: 'Milk Tea Rice Wine', description: 'Creamy milk tea-infused makgeolli.', price: '$16', img: `/menu/3226042800140.jpg`, tag: 'New' },
+      { name: 'Jipyeong Original Rice Wine 750ml', description: 'Classic Korean rice wine, lightly sparkling.', price: '$14', img: `/menu/3225011501217.jpg`, tag: 'Popular' },
+      { name: 'Kooksoondang Original Rice Wine 750ml', description: 'Traditional Korean rice wine.', price: '$13', img: `/menu/3224092501086.jpg` },
+      { name: 'Chestnut Rice Wine 750mL', description: 'Rice wine infused with roasted chestnut.', price: '$15', img: `/menu/3022060300088.jpg` },
       { name: 'Honeycomb (1pc)', description: 'Add a piece of honeycomb to your rice wine.', price: '$6', img: '/photos/honeycomb.jpg' },
     ],
   },
@@ -116,8 +116,8 @@ const drinkCategories: DrinkCategory[] = [
     id: 'soju',
     title: 'Soju',
     items: [
-      { name: 'Tokki Soju White (23%)', description: 'Small-batch, gently distilled soju.', price: '$37', img: `${IMG}/3224052200998.jpg`, tag: 'Sold Out' },
-      { name: 'Tokki Soju Black (40%)', description: 'Bold, small-batch soju at full strength.', price: '$49', img: `${IMG}/3224052201001.jpg` },
+      { name: 'Tokki Soju White (23%)', description: 'Small-batch, gently distilled soju.', price: '$37', img: `/menu/3224052200998.jpg`, tag: 'Sold Out' },
+      { name: 'Tokki Soju Black (40%)', description: 'Bold, small-batch soju at full strength.', price: '$49', img: `/menu/3224052201001.jpg` },
       { name: 'Bokbunja', description: 'Korean black raspberry wine, sweet and rich.', price: '$24', img: '/photos/bokbunja.jpg' },
       { name: 'Jinro', description: 'Classic Korean soju.', price: '$18', img: '/photos/jinro.jpg' },
       { name: 'Chumchurum', description: 'Classic Korean soju.', price: '$18', img: '/photos/chumchurum.jpg' },
@@ -160,6 +160,24 @@ const drinkCategories: DrinkCategory[] = [
         bottlePrice: '$54',
         img: '/photos/delinquente-wine.jpg',
       },
+    ],
+  },
+]
+
+const lunchSpecialCategories: FoodCategory[] = [
+  {
+    id: 'donburi',
+    title: 'Donburi',
+    items: [
+      { name: 'Chicken Don (Teriyaki / Spicy)', description: 'Grilled chicken over rice, teriyaki or spicy style.', price: '$16', img: '/donburi/teriyaki-chicken-don.jpg' },
+      { name: 'Beef Don (Teriyaki / Spicy)', description: 'Grilled beef over rice, teriyaki or spicy style.', price: '$18', img: '/donburi/beef-don.jpg' },
+      { name: 'Tofu Don (Teriyaki / Spicy)', description: 'Pan-seared tofu over rice, teriyaki or spicy style.', price: '$16', img: '/donburi/spicy-tofu-don.jpg' },
+      { name: 'Korean Fried Chicken Don', description: 'Korean fried chicken over rice.', price: '$16', img: '/donburi/kfc-don.jpg' },
+      { name: 'Pork Katsu Don', description: 'Crumbed pork cutlet over rice.', price: '$18', img: '/donburi/pork-katsu-don.jpg' },
+      { name: 'Unagi Don', description: 'Marinated eel over rice.', price: '$27', img: '/donburi/unagi-don.jpg' },
+      { name: 'Kaisen Don', description: 'Assorted sashimi over seasoned rice.', price: '$36', img: '/donburi/kaisen-don.jpg' },
+      { name: 'Beef Horumon Don', description: 'Grilled beef intestines over rice.', price: '$23', img: '/photos/horumon-don.jpg' },
+      { name: 'Pork Katsu Meal', description: 'Crumbed pork cutlet with rice and sides.', price: '$21', img: '/menu/3022060200173.jpg' },
     ],
   },
 ]
@@ -487,8 +505,21 @@ export default function App() {
         >
           <button
             onClick={() => scrollTo('hero')}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 0,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.65rem',
+            }}
           >
+            <img
+              src="/logo/night-mark.svg"
+              alt=""
+              style={{ height: '20px', width: '20px', display: 'block' }}
+            />
             <span
               style={{
                 fontFamily: SERIF,
@@ -944,30 +975,31 @@ export default function App() {
             >
               01. Lunch Specials
             </p>
-            <div
-              style={{
-                border: '1px solid rgba(140,140,140,0.25)',
-                padding: '4.5rem 2rem',
-                textAlign: 'center',
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: SERIF,
-                  fontStyle: 'italic',
-                  fontSize: '1.4rem',
-                  fontWeight: 300,
-                  color: 'rgba(245,240,232,0.65)',
-                  marginBottom: '0.75rem',
-                }}
-              >
-                Coming Soon
-              </p>
-              <p style={{ fontFamily: SANS, fontSize: '0.85rem', color: 'rgba(245,240,232,0.4)', fontWeight: 300 }}>
-                Our lunch specials are being finalised and will be added here shortly.
-              </p>
-            </div>
           </FadeIn>
+
+          {lunchSpecialCategories.map((category) => (
+            <div key={category.id} style={{ marginBottom: '2rem' }}>
+              <FadeIn>
+                <h3
+                  style={{
+                    fontFamily: SERIF,
+                    fontSize: 'clamp(1.5rem, 3vw, 2.1rem)',
+                    fontWeight: 300,
+                    color: IVORY,
+                    marginBottom: '2rem',
+                    letterSpacing: '-0.01em',
+                  }}
+                >
+                  {category.title}
+                </h3>
+              </FadeIn>
+              <div className="lnt-food-grid">
+                {category.items.map((item, ii) => (
+                  <DishCard key={item.name} item={item} delay={(ii % 4) * 60} />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* 02. Lunch & Dinner Menu */}
@@ -1790,7 +1822,12 @@ export default function App() {
           display: block;
           transition: transform 0.55s ease;
         }
-        .lnt-menu-card:hover .lnt-menu-card-img img,
+        .lnt-menu-card-img img {
+          transform: scale(1.06);
+        }
+        .lnt-menu-card:hover .lnt-menu-card-img img {
+          transform: scale(1.12);
+        }
         .lnt-drink-card:hover .lnt-drink-card-img img {
           transform: scale(1.06);
         }
