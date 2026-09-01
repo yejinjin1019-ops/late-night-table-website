@@ -977,6 +977,22 @@ export default function App() {
             </p>
           </FadeIn>
 
+          <FadeIn>
+            <p
+              style={{
+                fontFamily: SANS,
+                fontSize: '0.78rem',
+                fontWeight: 300,
+                color: 'rgba(245,240,232,0.45)',
+                letterSpacing: '0.02em',
+                marginTop: '-0.5rem',
+                marginBottom: '2.5rem',
+              }}
+            >
+              Available 11 am – 3 pm, Tuesday – Sunday.
+            </p>
+          </FadeIn>
+
           {lunchSpecialCategories.map((category) => (
             <div key={category.id} style={{ marginBottom: '2rem' }}>
               <FadeIn>
@@ -1420,6 +1436,51 @@ export default function App() {
                           </span>
                         </div>
                       ))}
+
+                      <div
+                        style={{
+                          marginTop: '0.75rem',
+                          paddingTop: '0.75rem',
+                          borderTop: '1px solid rgba(245,240,232,0.12)',
+                        }}
+                      >
+                        {[
+                          { label: 'Lunch Special', time: '11 am – 3 pm' },
+                          { label: 'Break Time', time: '3 pm – 4 pm' },
+                          { label: 'Dinner', time: '4 pm – Close' },
+                        ].map((s) => (
+                          <div
+                            key={s.label}
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              gap: '1.5rem',
+                              marginBottom: '0.35rem',
+                            }}
+                          >
+                            <span
+                              style={{
+                                fontFamily: SANS,
+                                fontSize: '0.72rem',
+                                color: 'rgba(245,240,232,0.35)',
+                                fontWeight: 300,
+                              }}
+                            >
+                              {s.label}
+                            </span>
+                            <span
+                              style={{
+                                fontFamily: SANS,
+                                fontSize: '0.72rem',
+                                color: 'rgba(245,240,232,0.45)',
+                                fontWeight: 300,
+                              }}
+                            >
+                              {s.time}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
