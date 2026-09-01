@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "late-night-table-dev",
+      "runtimeExecutable": "/Users/yejinahn/Downloads/late night table website/.tools/run-dev.sh",
+      "runtimeArgs": [],
+      "port": 8443
+    }
+  ]
+}
