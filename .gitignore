@@ -1,0 +1,4 @@
+node_modules/
+.tools/
+.vite/
+.DS_Store
