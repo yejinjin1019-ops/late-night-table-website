@@ -1,0 +1,10 @@
+{
+  "description": "Showcases a Korean fusion fine-dining restaurant with menus, reservation booking, and contact info in an elegant, moody, mobile-friendly design.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
