@@ -211,12 +211,16 @@ function FadeIn({ children, className = '', delay = 0 }: { children: ReactNode; 
   )
 }
 
-const ACCENT = '#FFFFFF'
+const ACCENT = '#C9A15A'
 const LABEL = '#8C8C8C'
-const IVORY = '#FFFFFF'
-const CHARCOAL = '#121212'
+const IVORY = '#F5F0E8'
+const CHARCOAL = '#141210'
+const BURGUNDY = '#5C1F1F'
 const SERIF = "'Fraunces', Georgia, serif"
 const SANS = "'Inter', system-ui, sans-serif"
+const RESTAURANT_ADDRESS = '5 George Street, North Strathfield NSW 2137'
+const RESTAURANT_PHONE_DISPLAY = '0450 506 200'
+const RESTAURANT_PHONE_TEL = '+61450506200'
 
 function DishCard({ item, delay = 0 }: { item: Dish; delay?: number }) {
   const soldOut = item.tag === 'Sold Out'
@@ -234,10 +238,10 @@ function DishCard({ item, delay = 0 }: { item: Dish; delay?: number }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: '#1a1a1a',
+                backgroundColor: '#221e19',
               }}
             >
-              <span style={{ fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>
+              <span style={{ fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(245,240,232,0.3)' }}>
                 Photo Coming Soon
               </span>
             </div>
@@ -251,9 +255,9 @@ function DishCard({ item, delay = 0 }: { item: Dish; delay?: number }) {
                 fontSize: '0.58rem',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                color: ACCENT,
-                backgroundColor: 'rgba(18,18,18,0.55)',
-                border: '1px solid rgba(255,255,255,0.4)',
+                color: item.tag === 'Very Spicy' ? IVORY : ACCENT,
+                backgroundColor: item.tag === 'Very Spicy' ? 'rgba(92,31,31,0.75)' : 'rgba(20,18,16,0.55)',
+                border: item.tag === 'Very Spicy' ? `1px solid ${BURGUNDY}` : '1px solid rgba(245,240,232,0.4)',
                 padding: '0.25rem 0.55rem',
               }}
             >
@@ -282,7 +286,7 @@ function DishCard({ item, delay = 0 }: { item: Dish; delay?: number }) {
             style={{
               fontFamily: SANS,
               fontSize: '0.8rem',
-              color: 'rgba(255,255,255,0.45)',
+              color: 'rgba(245,240,232,0.45)',
               lineHeight: 1.6,
               margin: '0.4rem 0 0',
               fontWeight: 300,
@@ -313,8 +317,8 @@ function DrinkCard({ item, delay = 0 }: { item: Drink; delay?: number }) {
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
                 color: ACCENT,
-                backgroundColor: 'rgba(18,18,18,0.55)',
-                border: '1px solid rgba(255,255,255,0.4)',
+                backgroundColor: 'rgba(20,18,16,0.55)',
+                border: '1px solid rgba(245,240,232,0.4)',
                 padding: '0.25rem 0.55rem',
               }}
             >
@@ -330,7 +334,7 @@ function DrinkCard({ item, delay = 0 }: { item: Drink; delay?: number }) {
             style={{
               fontFamily: SANS,
               fontSize: '0.78rem',
-              color: 'rgba(255,255,255,0.45)',
+              color: 'rgba(245,240,232,0.45)',
               lineHeight: 1.6,
               margin: '0.35rem 0 0.55rem',
               fontWeight: 300,
@@ -372,8 +376,6 @@ export default function App() {
   const [page, setPage] = useState<Page>(() =>
     typeof window !== 'undefined' && window.location.pathname.startsWith('/menu') ? 'menu' : 'home',
   )
-  const [form, setForm] = useState({ name: '', date: '', time: '', party: '2', message: '' })
-  const [submitted, setSubmitted] = useState(false)
   const pendingScrollRef = useRef<string | null>(null)
 
   useEffect(() => {
@@ -444,13 +446,19 @@ export default function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitted(true)
-  }
-
   return (
     <div style={{ backgroundColor: CHARCOAL, color: IVORY, fontFamily: SANS }}>
+      <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+        <defs>
+          <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#f09433" />
+            <stop offset="25%" stopColor="#e6683c" />
+            <stop offset="50%" stopColor="#dc2743" />
+            <stop offset="75%" stopColor="#cc2366" />
+            <stop offset="100%" stopColor="#bc1888" />
+          </linearGradient>
+        </defs>
+      </svg>
       {/* ── HEADER ─────────────────────────────────────────── */}
       <header
         className="lnt-header"
@@ -662,7 +670,7 @@ export default function App() {
                         letterSpacing: '0.05em',
                         fontFamily: SANS,
                         fontWeight: 300,
-                        color: 'rgba(255,255,255,0.65)',
+                        color: 'rgba(245,240,232,0.65)',
                         padding: '0.6rem 0 0.6rem 1rem',
                       }}
                     >
@@ -740,14 +748,21 @@ export default function App() {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            filter: 'grayscale(1) contrast(1.1)',
+            filter: 'grayscale(0.35) saturate(1.2) contrast(1.05) brightness(1.05)',
           }}
         />
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to top, rgba(18,18,18,0.97) 0%, rgba(18,18,18,0.55) 45%, rgba(18,18,18,0.15) 100%)',
+            background: 'linear-gradient(to top, rgba(20,18,16,0.85) 0%, rgba(20,18,16,0.4) 45%, rgba(20,18,16,0.08) 100%)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to right, rgba(20,18,16,0.8) 0%, rgba(20,18,16,0.45) 38%, rgba(20,18,16,0) 72%)',
           }}
         />
         <div
@@ -783,6 +798,7 @@ export default function App() {
                 color: IVORY,
                 marginBottom: '1.75rem',
                 textTransform: 'uppercase',
+                textShadow: '0 3px 24px rgba(20,18,16,0.75)',
               }}
             >
               After Dark,
@@ -795,7 +811,7 @@ export default function App() {
                 fontWeight: 300,
                 fontSize: '1rem',
                 lineHeight: 1.75,
-                color: 'rgba(255,255,255,0.65)',
+                color: 'rgba(245,240,232,0.65)',
                 maxWidth: '500px',
                 marginBottom: '2.75rem',
               }}
@@ -827,7 +843,7 @@ export default function App() {
                 className="lnt-btn-outline"
                 style={{
                   background: 'none',
-                  border: `1px solid rgba(255,255,255,0.35)`,
+                  border: `1px solid rgba(245,240,232,0.35)`,
                   cursor: 'pointer',
                   fontSize: '0.68rem',
                   letterSpacing: '0.18em',
@@ -884,7 +900,7 @@ export default function App() {
                 fontWeight: 300,
                 fontSize: '0.95rem',
                 lineHeight: 1.8,
-                color: 'rgba(255,255,255,0.5)',
+                color: 'rgba(245,240,232,0.5)',
                 maxWidth: '560px',
               }}
             >
@@ -902,7 +918,7 @@ export default function App() {
                 onClick={() => scrollWithinMenu(item.id)}
                 className="lnt-menu-subnav-btn"
                 style={{
-                  color: activeMenuSection === item.id ? ACCENT : 'rgba(255,255,255,0.4)',
+                  color: activeMenuSection === item.id ? ACCENT : 'rgba(245,240,232,0.4)',
                   borderBottom: activeMenuSection === item.id ? `1px solid ${ACCENT}` : '1px solid transparent',
                   fontWeight: activeMenuSection === item.id ? 500 : 300,
                 }}
@@ -941,13 +957,13 @@ export default function App() {
                   fontStyle: 'italic',
                   fontSize: '1.4rem',
                   fontWeight: 300,
-                  color: 'rgba(255,255,255,0.65)',
+                  color: 'rgba(245,240,232,0.65)',
                   marginBottom: '0.75rem',
                 }}
               >
                 Coming Soon
               </p>
-              <p style={{ fontFamily: SANS, fontSize: '0.85rem', color: 'rgba(255,255,255,0.4)', fontWeight: 300 }}>
+              <p style={{ fontFamily: SANS, fontSize: '0.85rem', color: 'rgba(245,240,232,0.4)', fontWeight: 300 }}>
                 Our lunch specials are being finalised and will be added here shortly.
               </p>
             </div>
@@ -1161,7 +1177,7 @@ export default function App() {
                     fontWeight: 300,
                     fontSize: '0.92rem',
                     lineHeight: 1.9,
-                    color: 'rgba(255,255,255,0.6)',
+                    color: 'rgba(245,240,232,0.6)',
                   }}
                 >
                   <p style={{ marginBottom: '1.3rem' }}>
@@ -1215,7 +1231,7 @@ export default function App() {
                           fontSize: '0.6rem',
                           letterSpacing: '0.22em',
                           textTransform: 'uppercase',
-                          color: 'rgba(255,255,255,0.35)',
+                          color: 'rgba(245,240,232,0.35)',
                         }}
                       >
                         {s.label}
@@ -1266,8 +1282,8 @@ export default function App() {
               <div>
                 <div style={{ marginBottom: '3.25rem' }}>
                   {[
-                    { label: 'Address', value: '5 George Street, North Strathfield NSW 2137' },
-                    { label: 'Phone', value: '+61 450 506 200' },
+                    { label: 'Address', value: RESTAURANT_ADDRESS },
+                    { label: 'Phone', value: RESTAURANT_PHONE_DISPLAY },
                   ].map((info) => (
                     <div
                       key={info.label}
@@ -1295,7 +1311,7 @@ export default function App() {
                         style={{
                           fontFamily: SANS,
                           fontSize: '0.88rem',
-                          color: 'rgba(255,255,255,0.62)',
+                          color: 'rgba(245,240,232,0.62)',
                           fontWeight: 300,
                           lineHeight: 1.5,
                         }}
@@ -1338,7 +1354,7 @@ export default function App() {
                             style={{
                               fontFamily: SANS,
                               fontSize: '0.82rem',
-                              color: 'rgba(255,255,255,0.45)',
+                              color: 'rgba(245,240,232,0.45)',
                               fontWeight: 300,
                             }}
                           >
@@ -1348,7 +1364,7 @@ export default function App() {
                             style={{
                               fontFamily: SANS,
                               fontSize: '0.82rem',
-                              color: h.late ? ACCENT : 'rgba(255,255,255,0.45)',
+                              color: h.late ? ACCENT : 'rgba(245,240,232,0.45)',
                               fontWeight: h.late ? 400 : 300,
                             }}
                           >
@@ -1362,7 +1378,7 @@ export default function App() {
                                   textTransform: 'uppercase',
                                   color: ACCENT,
                                   backgroundColor: 'transparent',
-                                  border: '1px solid rgba(255,255,255,0.4)',
+                                  border: '1px solid rgba(245,240,232,0.4)',
                                   padding: '0.15rem 0.45rem',
                                 }}
                               >
@@ -1381,49 +1397,44 @@ export default function App() {
                   style={{
                     position: 'relative',
                     height: '200px',
-                    backgroundColor: '#1a1a1a',
+                    backgroundColor: '#221e19',
                     overflow: 'hidden',
                     border: `1px solid rgba(140,140,140,0.14)`,
-                    marginBottom: '2rem',
+                    marginBottom: '0.85rem',
                   }}
                 >
-                  <img
-                    src="https://images.unsplash.com/photo-1570560258879-af7f8e1447ac?w=700&h=280&fit=crop&auto=format"
-                    alt="Restaurant entrance"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.35 }}
-                  />
-                  <div
+                  <iframe
+                    title="Late Night Table location"
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(RESTAURANT_ADDRESS)}&output=embed`}
                     style={{
-                      position: 'absolute',
-                      inset: 0,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '0.5rem',
+                      width: '100%',
+                      height: '100%',
+                      border: 0,
+                      filter: 'saturate(1.15) brightness(0.95) contrast(1.05)',
                     }}
-                  >
-                    <svg width="26" height="34" viewBox="0 0 26 34" fill="none">
-                      <path
-                        d="M13 0C5.82 0 0 5.82 0 13C0 22.75 13 34 13 34C13 34 26 22.75 26 13C26 5.82 20.18 0 13 0Z"
-                        fill={ACCENT}
-                        fillOpacity="0.9"
-                      />
-                      <circle cx="13" cy="13" r="5" fill={CHARCOAL} />
-                    </svg>
-                    <span
-                      style={{
-                        fontFamily: SANS,
-                        fontSize: '0.62rem',
-                        letterSpacing: '0.18em',
-                        textTransform: 'uppercase',
-                        color: LABEL,
-                      }}
-                    >
-                      5 George St, North Strathfield
-                    </span>
-                  </div>
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(RESTAURANT_ADDRESS)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="lnt-social-link"
+                  style={{
+                    display: 'inline-block',
+                    textDecoration: 'none',
+                    color: 'rgba(245,240,232,0.45)',
+                    fontFamily: SANS,
+                    fontSize: '0.7rem',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    marginBottom: '2rem',
+                    transition: 'color 0.2s',
+                  }}
+                >
+                  Get Directions →
+                </a>
 
                 {/* Social */}
                 <div style={{ display: 'flex', gap: '1.5rem' }}>
@@ -1432,7 +1443,7 @@ export default function App() {
                       label: '@late.night.table',
                       href: 'https://www.instagram.com/late.night.table/',
                       icon: (
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="url(#instagram-gradient)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                           <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                           <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                           <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -1451,7 +1462,7 @@ export default function App() {
                         alignItems: 'center',
                         gap: '0.5rem',
                         textDecoration: 'none',
-                        color: 'rgba(255,255,255,0.45)',
+                        color: 'rgba(245,240,232,0.45)',
                         fontFamily: SANS,
                         fontSize: '0.8rem',
                         fontWeight: 300,
@@ -1466,188 +1477,87 @@ export default function App() {
               </div>
             </FadeIn>
 
-            {/* FORM */}
+            {/* CALL / TEXT TO RESERVE */}
             <FadeIn delay={160}>
-              {submitted ? (
-                <div
+              <div
+                style={{
+                  border: `1px solid rgba(140,140,140,0.25)`,
+                  padding: '3.5rem 2.5rem',
+                }}
+              >
+                <h3
                   style={{
-                    border: `1px solid rgba(140,140,140,0.25)`,
-                    padding: '4rem 2.5rem',
-                    textAlign: 'center',
+                    fontFamily: SERIF,
+                    fontSize: '1.5rem',
+                    fontWeight: 300,
+                    color: IVORY,
+                    marginBottom: '0.9rem',
                   }}
                 >
-                  <div style={{ marginBottom: '1.5rem' }}>
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style={{ margin: '0 auto' }}>
-                      <circle cx="20" cy="20" r="19" stroke={ACCENT} strokeWidth="1" />
-                      <path d="M12 20l6 6 10-12" stroke={ACCENT} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <h3 style={{ fontFamily: SERIF, fontSize: '1.6rem', fontWeight: 300, color: IVORY, marginBottom: '0.75rem' }}>
-                    Reservation Received
-                  </h3>
-                  <p style={{ fontFamily: SANS, fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', fontWeight: 300, lineHeight: 1.7 }}>
-                    Thank you, {form.name || 'Guest'}. We&apos;ll confirm your table shortly by phone.
-                    <br />We look forward to seeing you at Late Night Table.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.3rem' }}>
-                  <h3
-                    style={{
-                      fontFamily: SERIF,
-                      fontSize: '1.5rem',
-                      fontWeight: 300,
-                      color: IVORY,
-                      marginBottom: '0.35rem',
-                    }}
-                  >
-                    Make a Reservation
-                  </h3>
+                  Reserve a Table
+                </h3>
+                <p
+                  style={{
+                    fontFamily: SANS,
+                    fontSize: '0.88rem',
+                    color: 'rgba(245,240,232,0.55)',
+                    fontWeight: 300,
+                    lineHeight: 1.75,
+                    marginBottom: '2.5rem',
+                  }}
+                >
+                  We don&apos;t take bookings online — call or text us and we&apos;ll sort out your table.
+                </p>
 
-                  {[
-                    { key: 'name', label: 'Full Name', type: 'text', placeholder: 'Your name' },
-                    { key: 'date', label: 'Date', type: 'date', placeholder: '' },
-                    { key: 'time', label: 'Preferred Time', type: 'time', placeholder: '' },
-                  ].map((f) => (
-                    <div key={f.key}>
-                      <label
-                        style={{
-                          display: 'block',
-                          fontSize: '0.58rem',
-                          letterSpacing: '0.22em',
-                          textTransform: 'uppercase',
-                          color: 'rgba(255,255,255,0.38)',
-                          fontFamily: SANS,
-                          marginBottom: '0.4rem',
-                        }}
-                      >
-                        {f.label}
-                      </label>
-                      <input
-                        type={f.type}
-                        value={(form as Record<string, string>)[f.key]}
-                        onChange={(e) => setForm((prev) => ({ ...prev, [f.key]: e.target.value }))}
-                        placeholder={f.placeholder}
-                        style={{
-                          width: '100%',
-                          backgroundColor: 'rgba(255,255,255,0.035)',
-                          border: `1px solid rgba(140,140,140,0.18)`,
-                          color: IVORY,
-                          fontFamily: SANS,
-                          fontSize: '0.88rem',
-                          fontWeight: 300,
-                          padding: '0.8rem 1rem',
-                          outline: 'none',
-                          colorScheme: 'dark',
-                          boxSizing: 'border-box',
-                          transition: 'border-color 0.2s',
-                        }}
-                        className="lnt-input"
-                      />
-                    </div>
-                  ))}
+                <a
+                  href={`tel:${RESTAURANT_PHONE_TEL}`}
+                  className="lnt-btn-gold"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: ACCENT,
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontSize: '0.68rem',
+                    letterSpacing: '0.18em',
+                    textTransform: 'uppercase',
+                    color: CHARCOAL,
+                    fontFamily: SANS,
+                    fontWeight: 600,
+                    padding: '1rem 2rem',
+                    textDecoration: 'none',
+                    transition: 'background 0.2s',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  Call {RESTAURANT_PHONE_DISPLAY}
+                </a>
 
-                  <div>
-                    <label
-                      style={{
-                        display: 'block',
-                        fontSize: '0.58rem',
-                        letterSpacing: '0.22em',
-                        textTransform: 'uppercase',
-                        color: 'rgba(255,255,255,0.38)',
-                        fontFamily: SANS,
-                        marginBottom: '0.4rem',
-                      }}
-                    >
-                      Party Size
-                    </label>
-                    <select
-                      value={form.party}
-                      onChange={(e) => setForm((prev) => ({ ...prev, party: e.target.value }))}
-                      style={{
-                        width: '100%',
-                        backgroundColor: '#1a1a1a',
-                        border: `1px solid rgba(140,140,140,0.18)`,
-                        color: IVORY,
-                        fontFamily: SANS,
-                        fontSize: '0.88rem',
-                        fontWeight: 300,
-                        padding: '0.8rem 1rem',
-                        outline: 'none',
-                        cursor: 'pointer',
-                        boxSizing: 'border-box',
-                        colorScheme: 'dark',
-                      }}
-                    >
-                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-                        <option key={n} value={n}>
-                          {n} {n === 1 ? 'guest' : 'guests'}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label
-                      style={{
-                        display: 'block',
-                        fontSize: '0.58rem',
-                        letterSpacing: '0.22em',
-                        textTransform: 'uppercase',
-                        color: 'rgba(255,255,255,0.38)',
-                        fontFamily: SANS,
-                        marginBottom: '0.4rem',
-                      }}
-                    >
-                      Special Requests
-                    </label>
-                    <textarea
-                      value={form.message}
-                      onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
-                      placeholder="Dietary requirements, occasions, seating preferences..."
-                      rows={4}
-                      style={{
-                        width: '100%',
-                        backgroundColor: 'rgba(255,255,255,0.035)',
-                        border: `1px solid rgba(140,140,140,0.18)`,
-                        color: IVORY,
-                        fontFamily: SANS,
-                        fontSize: '0.88rem',
-                        fontWeight: 300,
-                        padding: '0.8rem 1rem',
-                        outline: 'none',
-                        resize: 'vertical',
-                        lineHeight: 1.7,
-                        boxSizing: 'border-box',
-                        colorScheme: 'dark',
-                      }}
-                      className="lnt-input"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="lnt-btn-gold"
-                    style={{
-                      backgroundColor: ACCENT,
-                      border: 'none',
-                      cursor: 'pointer',
-                      fontSize: '0.68rem',
-                      letterSpacing: '0.18em',
-                      textTransform: 'uppercase',
-                      color: CHARCOAL,
-                      fontFamily: SANS,
-                      fontWeight: 600,
-                      padding: '1rem 2rem',
-                      marginTop: '0.25rem',
-                      transition: 'background 0.2s',
-                      width: '100%',
-                    }}
-                  >
-                    Confirm Reservation
-                  </button>
-                </form>
-              )}
+                <a
+                  href={`sms:${RESTAURANT_PHONE_TEL}`}
+                  className="lnt-btn-outline"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'none',
+                    border: `1px solid rgba(245,240,232,0.35)`,
+                    cursor: 'pointer',
+                    fontSize: '0.68rem',
+                    letterSpacing: '0.18em',
+                    textTransform: 'uppercase',
+                    color: IVORY,
+                    fontFamily: SANS,
+                    fontWeight: 400,
+                    padding: '1rem 2rem',
+                    textDecoration: 'none',
+                    transition: 'border-color 0.2s, color 0.2s',
+                  }}
+                >
+                  Text Us
+                </a>
+              </div>
             </FadeIn>
           </div>
         </div>
@@ -1658,7 +1568,7 @@ export default function App() {
       {/* ── FOOTER ─────────────────────────────────────────── */}
       <footer
         style={{
-          backgroundColor: '#0d0d0d',
+          backgroundColor: '#17130f',
           borderTop: `1px solid rgba(140,140,140,0.22)`,
           padding: '4.5rem 0 2rem',
         }}
@@ -1683,7 +1593,7 @@ export default function App() {
                 style={{
                   fontFamily: SANS,
                   fontSize: '0.8rem',
-                  color: 'rgba(255,255,255,0.35)',
+                  color: 'rgba(245,240,232,0.35)',
                   fontWeight: 300,
                   lineHeight: 1.75,
                   maxWidth: '280px',
@@ -1717,7 +1627,7 @@ export default function App() {
                     cursor: 'pointer',
                     fontFamily: SANS,
                     fontSize: '0.8rem',
-                    color: 'rgba(255,255,255,0.38)',
+                    color: 'rgba(245,240,232,0.38)',
                     fontWeight: 300,
                     padding: '0.3rem 0',
                     transition: 'color 0.2s',
@@ -1751,14 +1661,14 @@ export default function App() {
                   alignItems: 'center',
                   gap: '0.55rem',
                   textDecoration: 'none',
-                  color: 'rgba(255,255,255,0.38)',
+                  color: 'rgba(245,240,232,0.38)',
                   fontFamily: SANS,
                   fontSize: '0.8rem',
                   fontWeight: 300,
                   transition: 'color 0.2s',
                 }}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="url(#instagram-gradient)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -1770,7 +1680,7 @@ export default function App() {
 
           <div
             style={{
-              borderTop: `1px solid rgba(255,255,255,0.06)`,
+              borderTop: `1px solid rgba(245,240,232,0.06)`,
               paddingTop: '1.5rem',
               display: 'flex',
               justifyContent: 'space-between',
@@ -1779,11 +1689,11 @@ export default function App() {
               gap: '0.5rem',
             }}
           >
-            <p style={{ fontFamily: SANS, fontSize: '0.68rem', color: 'rgba(255,255,255,0.2)', fontWeight: 300 }}>
+            <p style={{ fontFamily: SANS, fontSize: '0.68rem', color: 'rgba(245,240,232,0.2)', fontWeight: 300 }}>
               © 2026 Late Night Table. All rights reserved.
             </p>
-            <p style={{ fontFamily: SANS, fontSize: '0.68rem', color: 'rgba(255,255,255,0.2)', fontWeight: 300 }}>
-              5 George Street, North Strathfield NSW 2137
+            <p style={{ fontFamily: SANS, fontSize: '0.68rem', color: 'rgba(245,240,232,0.2)', fontWeight: 300 }}>
+              {RESTAURANT_ADDRESS}
             </p>
           </div>
         </div>
@@ -1794,21 +1704,21 @@ export default function App() {
         ::selection { background-color: rgba(140,140,140,0.28); color: #F5F0E8; }
         ::-webkit-scrollbar { width: 0; background: transparent; }
 
-        .lnt-btn-gold:hover { background-color: #d4ae6c !important; }
+        .lnt-btn-gold:hover { background-color: #ddbd86 !important; }
         .lnt-btn-outline:hover { border-color: ${ACCENT} !important; color: ${ACCENT} !important; }
         .lnt-reserve-btn:hover { background-color: ${ACCENT} !important; color: ${CHARCOAL} !important; }
         .lnt-nav-link:hover { opacity: 1 !important; }
         .lnt-social-link:hover { color: ${ACCENT} !important; }
         .lnt-footer-link:hover { color: ${ACCENT} !important; }
         .lnt-input:focus { border-color: rgba(140,140,140,0.45) !important; box-shadow: 0 0 0 1px rgba(140,140,140,0.12); }
-        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2) !important; }
+        input::placeholder, textarea::placeholder { color: rgba(245,240,232,0.2) !important; }
 
         .lnt-menu-dropdown {
           position: absolute;
           top: calc(100% + 1.25rem);
           left: 50%;
           transform: translateX(-50%);
-          background: rgba(18,18,18,0.98);
+          background: rgba(20,18,16,0.98);
           border: 1px solid rgba(140,140,140,0.22);
           padding: 0.6rem 0;
           min-width: 210px;
@@ -1822,7 +1732,7 @@ export default function App() {
           cursor: pointer;
           text-align: left;
           font-family: ${SANS};
-          color: rgba(255,255,255,0.6);
+          color: rgba(245,240,232,0.6);
           font-size: 0.75rem;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -1830,13 +1740,13 @@ export default function App() {
           transition: color 0.2s, background-color 0.2s;
           white-space: nowrap;
         }
-        .lnt-menu-dropdown-item:hover { color: ${ACCENT}; background-color: rgba(255,255,255,0.06); }
+        .lnt-menu-dropdown-item:hover { color: ${ACCENT}; background-color: rgba(245,240,232,0.06); }
 
         .lnt-menu-subnav {
           position: sticky;
           top: 72px;
           z-index: 40;
-          background: rgba(18,18,18,0.96);
+          background: rgba(20,18,16,0.96);
           backdrop-filter: blur(12px);
           border-top: 1px solid rgba(140,140,140,0.18);
           border-bottom: 1px solid rgba(140,140,140,0.18);
@@ -1867,7 +1777,7 @@ export default function App() {
         .lnt-menu-card-img, .lnt-drink-card-img {
           position: relative;
           overflow: hidden;
-          background-color: #1a1a1a;
+          background-color: #221e19;
         }
         .lnt-menu-card-img { aspect-ratio: 1 / 1; }
         .lnt-menu-card-featured .lnt-menu-card-img { aspect-ratio: 16 / 11; }
@@ -1904,7 +1814,7 @@ export default function App() {
         }
         .lnt-menu-teaser-more-img {
           aspect-ratio: 1 / 1;
-          border: 1px solid rgba(255,255,255,0.3);
+          border: 1px solid rgba(245,240,232,0.3);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1917,7 +1827,7 @@ export default function App() {
           display: inline-block;
         }
         .lnt-menu-teaser-more-btn:hover .lnt-menu-teaser-more-img {
-          background-color: rgba(255,255,255,0.06);
+          background-color: rgba(245,240,232,0.06);
           border-color: ${ACCENT};
         }
         .lnt-menu-teaser-more-btn:hover .lnt-menu-teaser-more-img span {
