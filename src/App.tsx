@@ -113,6 +113,17 @@ const drinkCategories: DrinkCategory[] = [
     ],
   },
   {
+    id: 'highball',
+    title: 'Highball',
+    items: [
+      { name: 'Fruit Highball', description: 'Choice of strawberry, mango, or green grape.', price: '$20', img: `/menu/3223091900777.jpg` },
+      { name: 'Earl Grey Highball', description: 'Whisky highball infused with earl grey tea.', price: '$15', img: `/menu/3223091900760.jpg` },
+      { name: 'Soy Milk Highball', description: 'Whisky highball with creamy soy milk.', price: '$15', img: `/menu/3223013100506.jpg` },
+      { name: 'Plum Highball', description: 'Whisky highball with sweet Korean plum.', price: '$15', img: `/menu/3223013100513.jpg` },
+      { name: 'Tonic Highball', description: 'Classic whisky highball with tonic water.', price: '$15', img: `/menu/3223013100520.jpg` },
+    ],
+  },
+  {
     id: 'soju',
     title: 'Soju',
     items: [
@@ -237,7 +248,7 @@ const BURGUNDY = '#5C1F1F'
 const SERIF = "'Fraunces', Georgia, serif"
 const SANS = "'Inter', system-ui, sans-serif"
 const RESTAURANT_ADDRESS = '5 George Street, North Strathfield NSW 2137'
-const RESTAURANT_PHONE_DISPLAY = '0450 506 200'
+const RESTAURANT_PHONE_DISPLAY = '+61 450 506 200'
 const RESTAURANT_PHONE_TEL = '+61450506200'
 
 function DishCard({ item, delay = 0 }: { item: Dish; delay?: number }) {
@@ -1166,8 +1177,8 @@ export default function App() {
             <FadeIn>
               <div style={{ position: 'relative' }}>
                 <img
-                  src="/photos/about-dining.jpg"
-                  alt="Moody, candlelit dining room"
+                  src="https://images.unsplash.com/photo-1548971806-96e91d70b144?w=1200&auto=format&fit=crop&q=80"
+                  alt="Black and white photo of a bartender silhouetted beneath a chandelier at a moody bar"
                   style={{ width: '100%', aspectRatio: '4/5', objectFit: 'cover', display: 'block' }}
                 />
                 <div
@@ -1182,8 +1193,8 @@ export default function App() {
                   }}
                 >
                   <img
-                    src="/photos/about-bar-detail.jpg"
-                    alt="Wine glasses over a warmly lit bar counter"
+                    src="https://images.unsplash.com/photo-1632563658615-e367ddd435af?w=800&auto=format&fit=crop&q=80"
+                    alt="A highball glass glowing warm on the bar counter as a bartender works behind it"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
                 </div>
@@ -1215,9 +1226,9 @@ export default function App() {
                     letterSpacing: '-0.015em',
                   }}
                 >
-                  Korean Comfort Meets
+                  Beyond Korean
                   <br />
-                  <em style={{ color: ACCENT, fontStyle: 'italic' }}>Western Plates</em>
+                  <em style={{ color: ACCENT, fontStyle: 'italic' }}>Classics</em>
                 </h2>
                 <div
                   style={{
@@ -1229,20 +1240,24 @@ export default function App() {
                   }}
                 >
                   <p style={{ marginBottom: '1.3rem' }}>
-                    야식탁, Late Night Table, is a Korean-Western fusion anju bar in North Strathfield built for
-                    the hours when everywhere else is closing up. Bubbling pots of tteokbokki and grilled large
-                    intestine share the table with truffle pasta and risotto — the kind of menu that only makes
-                    sense after dark.
+                    Late Night Table is a Korean dining and anju bar in North Strathfield, bringing a fresh take
+                    to the flavours people know and love.
                   </p>
                   <p style={{ marginBottom: '1.3rem' }}>
-                    We pair Korean pantry staples — gochujang, doenjang, perilla — with pasta, risotto, and other
-                    Western techniques, then pour it all with soju, makgeolli, highballs, and beer on tap. Come for
-                    the signature Galbi Risotto, stay for however long the night runs.
+                    We serve familiar Korean favourites alongside dishes with an unexpected twist — from
+                    bubbling pots and grilled dishes to creative plates inspired by flavours from Korea and
+                    beyond. It's Korean food, but not quite the way you might expect.
                   </p>
-                  <p>
-                    Open Tuesday to Sunday, closed Mondays. Walk in any night for a table, a pot, and a round of
-                    soju.
+                  <p style={{ marginBottom: '1.3rem' }}>
+                    We wanted to create a place where people can enjoy something a little different from the
+                    usual Korean dining experience — with thoughtfully prepared dishes, a warm atmosphere, and
+                    flavours worth coming back for.
                   </p>
+                  <p style={{ marginBottom: '1.3rem' }}>
+                    Whether you're here for dinner, drinks with friends, or a late-night meal, there's always
+                    something worth discovering at Late Night Table.
+                  </p>
+                  <p style={{ color: IVORY, fontWeight: 500 }}>Welcome to Late Night Table.</p>
                 </div>
 
                 <div
@@ -1256,7 +1271,7 @@ export default function App() {
                   }}
                 >
                   {[
-                    { label: 'Cuisine', value: 'K-Fusion' },
+                    { label: 'Dining', value: 'Korean' },
                     { label: 'Signature', value: 'Galbi Risotto' },
                     { label: 'Open Until', value: 'Midnight' },
                   ].map((s) => (
@@ -1355,17 +1370,33 @@ export default function App() {
                       >
                         {info.label}
                       </span>
-                      <span
-                        style={{
-                          fontFamily: SANS,
-                          fontSize: '0.88rem',
-                          color: 'rgba(245,240,232,0.62)',
-                          fontWeight: 300,
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        {info.value}
-                      </span>
+                      {info.label === 'Phone' ? (
+                        <a
+                          href={`tel:${RESTAURANT_PHONE_TEL}`}
+                          style={{
+                            fontFamily: SANS,
+                            fontSize: '0.88rem',
+                            color: 'rgba(245,240,232,0.62)',
+                            fontWeight: 300,
+                            lineHeight: 1.5,
+                            textDecoration: 'none',
+                          }}
+                        >
+                          {info.value}
+                        </a>
+                      ) : (
+                        <span
+                          style={{
+                            fontFamily: SANS,
+                            fontSize: '0.88rem',
+                            color: 'rgba(245,240,232,0.62)',
+                            fontWeight: 300,
+                            lineHeight: 1.5,
+                          }}
+                        >
+                          {info.value}
+                        </span>
+                      )}
                     </div>
                   ))}
 
