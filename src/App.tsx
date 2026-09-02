@@ -1193,8 +1193,8 @@ export default function App() {
                   }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1632563658615-e367ddd435af?w=800&auto=format&fit=crop&q=80"
-                    alt="A highball glass glowing warm on the bar counter as a bartender works behind it"
+                    src="https://images.unsplash.com/photo-1590485383999-38488ac97de0?w=800&auto=format&fit=crop&q=80"
+                    alt="Black and white photo of red wine being poured into a glass"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
                 </div>
